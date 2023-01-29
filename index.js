@@ -1,8 +1,30 @@
 const inventory = newInventory()
 move(inventory).to(0, 0)
 
+
 const character = newImage('assets/green-character/static.gif')
-move(character).to(100, 250)
+
+function handleDirectionChange(direction) {
+    switch (direction) {
+        case null:
+            character.src = 'assets/green-character/static.gif'
+            break;
+        case 'west':
+            character.src = 'assets/green-character/west.gif'
+            break;
+        case 'north':
+            character.src = 'assets/green-character/north.gif'
+            break;
+        case 'east':
+            character.src = 'assets/green-character/east.gif'
+            break;
+        case 'south':
+            character.src = 'assets/green-character/south.gif'
+            break;
+    }
+}
+move(character).withArrowKeys(100, 250, handleDirectionChange)
+
 
 
 move(newImage('assets/tree.png')).to(200, 450)
